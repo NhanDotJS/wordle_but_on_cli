@@ -5,7 +5,9 @@
 ## Steps to play
 
 1. Install Python 3
+
    ~~`pip install termcolor`~~
+
 2. `python3 wordle.py`
 
 ## Credit:
