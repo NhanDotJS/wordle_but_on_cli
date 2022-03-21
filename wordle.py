@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-import sys
-from termcolor import colored
+
 import random
 
 
@@ -46,6 +45,14 @@ displayChars = [
     [' ', ' ', ' ', ' ', ' ']]
 
 
+def toYellow(text):
+    return f'\033[93m{text}\033[00m'
+
+
+def toGreen(text):
+    return f'\033[92m{text}\033[00m'
+
+
 def printOutput():
     print(f'''
     +---+---+---+---+---+
@@ -78,28 +85,22 @@ def takeInput():
 
 def verifyWord(guess, answer):
     result = []
-    colorList = []
     if guess == answer:
-        colorList = ['green', 'green', 'green', 'green', 'green']
         for char in guess:
-            formatted = colored(char, 'green')
+            formatted = toGreen(char)
             result.append(formatted)
         return result, True
     else:
         charToFind = list(answer)
-        colorList = []
         for x in range(len(guess)):
-            color = 'white'
-            if guess[x] in charToFind:
-                if charToFind[x] == guess[x]:
-                    color = 'green'
+            charInGuess = guess[x]
+            if charInGuess in charToFind:
+                if charToFind[x] == charInGuess:
+                    charInGuess = toGreen(charInGuess)
                 else:
-                    color = 'yellow'
+                    charInGuess = toYellow(charInGuess)
                 charToFind[charToFind.index(guess[x])] = ''
-            colorList.append(color)
-        for x in range(len(guess)):
-            formatted = colored(guess[x], colorList[x])
-            result.append(formatted)
+            result.append(charInGuess)
         return result, False
 
 
@@ -132,5 +133,3 @@ __   _______ _   _   _     _____ _____ _____
                                              
                                          ''')  # noqa
     print(f'The word is: {answer}')
-# displayChars[0] = takeInput()
-# printOutput()
