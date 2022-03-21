@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
-# pycodestyle: disable=line-too-long
-from multiprocessing.connection import answer_challenge
 import sys
-from termcolor import colored, cprint
+from termcolor import colored
 import random
 
 
