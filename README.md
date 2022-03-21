@@ -4,5 +4,5 @@
 
 ## Requirements:
 
-[ ] Python 3
-[ ] `pip install termcolor`
+- [ ] Python 3
+- [ ] `pip install termcolor`
